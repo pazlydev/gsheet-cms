@@ -1,0 +1,172 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="article" />
+
+  
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="og:title" property="og:title" content="" />
+  <meta name="og:description" property="og:description" content="" />
+  <meta name="og:image" property="og:image" content="" />
+  <meta name="twitter:title" content="" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:image" content="" />
+  <meta name="twitter:card" content="summary_large_image" />
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Pazly Colors -->
+    <link rel="stylesheet" href="https://pazly.dev/colors/gradients.css" />
+    <link rel="stylesheet" href="https://pazly.dev/colors/backgrounds.css" />
+    <link rel="stylesheet" href="https://pazly.dev/colors/text.css" />
+    <link rel="stylesheet" href="https://pazly.dev/colors/border.css" />
+    <style>
+    h1, h2, h3, h4, h5, h6 { line-height:1.3 !important; }
+    .stretchToScreen { width:100vw; height:100vh; }
+    </style>
+
+    <!-- Fontswesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</head>
+
+<body class="m-0 p-0 stretchToScreen">
+
+
+<!-- Pazly Blocks Come Here -->
+<section id="pazly-template-set" class="m-0 p-0 stretchToScreen bg-p-truegray-100">
+
+<!-- Nav Bar -->
+<section xmlns="http://www.w3.org/1999/xhtml" class="w-full text-p-white bg-p-white shadow-md fixed z-10">
+    <div class="container mx-auto flex flex-wrap px-5 py-2 flex-col md:flex-row items-center justify-between">
+        <a pazly-editable="href" class="flex title-font font-medium items-center px-2 text-p-gray-900 md:mb-0">
+            <img pazly-editable="src child" class="m-2 w-16 h-16 rounded-full shadow-md object-cover object-center" alt="logo" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG1lc2h8ZW58MHx8MHx8&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" />
+            <span pazly-editable="innerHTML child" class="ml-3 text-xl whitespace-pre-line font-extrabold text-p-purple-700">GSheet CMS</span>
+        </a>
+        <div class="flex flex-col md:flex-row">
+            <nav class="flex flex-wrap items-center text-center justify-center pb-2 md:pb-0">
+                <a pazly-editable="innerHTML href clone" target="_blank" class="mr-5 text-xl cursor-pointer whitespace-pre-line text-p-black">About</a>
+                <a pazly-editable="innerHTML href clone" target="_blank" class="mr-5 text-xl cursor-pointer whitespace-pre-line text-p-black">Pricing</a>
+                <a pazly-editable="innerHTML href clone" target="_blank" class="mr-5 text-xl cursor-pointer whitespace-pre-line text-p-black">Contact</a>
+            </nav>
+            <div class="flex flex-row justify-center pb-2 md:pb-0">
+                <a pazly-editable="innerHTML href bg clone" target="_blank" class="mx-1 py-2 px-6 rounded-full whitespace-pre-line font-semibold text-p-white bg-p-purple-600 shadow-md">LOGIN</a>
+                <a pazly-editable="innerHTML href bg clone" target="_blank" class="bg-white mx-1 py-2 px-6 rounded-full whitespace-pre-line font-semibold text-p-purple-700 shadow-md">SIGNUP</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="w-full grid grid-cols-9 gap-0">
+    <div class="col-span-6">
+        <!-- Google Sheet URL Input -->
+        <section xmlns="http://www.w3.org/1999/xhtml"  class="w-full pt-32 pb-4 bg-p-truegray-100">
+            <div  class="container mx-auto flex px-5 md:flex-row flex-col-reverse items-center">
+                <div class="w-full rounded-md shadow-md bg-white grid grid-cols-4 gap-4 items-center justify-around p-2">
+                    <div class="">
+                        <h1 class="w-full text-left pl-2">1. Paste your Google Sheet link here</h1>
+                    </div>
+                    <div class="col-span-3 flex flex-row justify-start w-full rounded-md overflow-hidden">
+                        <input class="bg-p-gray-100 focus:outline-none px-4 w-full m-0 mr-2 rounded-md " placeholder="Your Public Google Sheet URL" id="gSheetURL" type="text">
+                        <button onClick="getSheetID()" class="rounded-md inline-flex items-center py-2 px-6 focus:outline-none text-base m-0 h-12 whitespace-pre-line text-p-white bg-p-purple-700"> 
+                            <i class="fas fa-cloud-download-alt mr-2"></i> Connect            
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section xmlns="http://www.w3.org/1999/xhtml"  class="w-full py-4 bg-p-truegray-100">
+            <div  class="container mx-auto flex px-5 md:flex-row flex-col-reverse items-center">
+                <div class="w-full rounded-md shadow-md bg-white grid grid-cols-4 gap-4 items-start justify-around p-2">
+                    <div class="mt-2">
+                        <h1 class="w-full text-left pl-2">2. Add this script to your website</h1>
+                    </div>
+                    <div class="col-span-3 flex flex-row flex-wrap justify-end w-full rounded-md overflow-hidden">
+                        <div id="scriptTag"  class="h-24 flex bg-p-gray-100 focus:outline-none px-4 w-full m-0 text-p-teal-700 items-center justify-start rounded-md ">
+                        <div class="text-p-gray-400"> This will be available after you paste in your Google Sheet link above</div>
+                        </div>
+                        <button onclick="copyIntegartionsScriptToClipboard()" pazly-editable="innerHTML bg" target="_blank" class="rounded-md inline-flex items-center py-2 px-6 focus:outline-none text-base my-3 h-12 whitespace-pre-line text-p-white bg-p-purple-700"> 
+                            <i class="fas fa-copy mr-2"></i> Copy            
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reasults -->
+        <section class="py-1 pt-4 bg-p-truegray-100">
+            <div class="container mx-auto  px-5">
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                    <div class="w-full bg-white grid grid-cols-4 gap-4 items-center justify-around p-2">
+                        <div class="">
+                            <h1 class="w-full text-left pl-2">3. Click on the cells in the table</h1>
+                        </div>
+                        <div class="col-span-3 flex flex-row justify-start w-full rounded-md overflow-hidden">
+                        <!-- 
+                            <input class="bg-p-gray-100 focus:outline-none px-4 w-full mr-2 rounded-md " placeholder="Examples: A1-D5, A2" name="searchText" type="text">
+                            <button pazly-editable="innerHTML bg" target="_blank" class="rounded-md inline-flex items-center py-2 px-6 focus:outline-none text-base m-0 h-12 whitespace-pre-line text-p-white bg-p-purple-700"> 
+                                <i class="fas fa-search mr-2"></i> Search            
+                            </button>
+                            -->
+                            <div class="relative w-full max-w-full flex-grow flex-1 text-right">
+                                <button onClick="getSheetID()" class="bg-indigo-500 text-white active:bg-indigo-600 text-sm py-3 px-6 rounded-md outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">Refresh</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 
+                    <div class="rounded-t mb-0 px-4 py-3 border-0">
+                        <div class="flex flex-wrap items-center">
+                            <div class="relative w-full max-w-full flex-grow flex-1">
+                                <h3 class="font-semibold text-base text-p-truegray-700">Results</h3>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                    <div id="json" class="block w-full overflow-x-auto"> </div>
+
+                </div>
+                <div class="w-full text-center text-p-gray-500 text-sm">
+                  <!--  At this moment you can olny load 20 rows. More options coming soon. --> 
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="h-screen col-span-3 bg-white shadow-lg pt-32 px-4">
+        <div>
+            Follow the steps on the left, then select a field in the table below.
+            You will see details about your selected table cell here.
+        </div>
+
+        <div id="selectedCellDetails" class="whitespace-pre-line">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</section>
+<!-- Pazly Blocks Ends Here -->
+
+<!-- Pazly Scripts Start Here -->
+<section id="pazly-scripts-set" class="m-0 p-0 w-0 h-0">
+        
+<!-- Smooth scrolling -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="./js/app.js"></script>
+
+</section>
+        
+</body>
+</html>
+            
